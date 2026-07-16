@@ -27,9 +27,12 @@ jobs:
 
       - name: Build y Push imagen a ECR
         run: |
+          IMAGE_TAG=${{ github.sha }}
           docker build -t tienda-perritos-frontend .
           docker tag tienda-perritos-frontend:latest 481027514113.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-frontend:latest
+          docker tag tienda-perritos-frontend:latest 481027514113.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-frontend:$IMAGE_TAG
           docker push 481027514113.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-frontend:latest
+          docker push 481027514113.dkr.ecr.us-east-1.amazonaws.com/tienda-perritos-frontend:$IMAGE_TAG
 
       - name: Deploy a ECS
         run: |
