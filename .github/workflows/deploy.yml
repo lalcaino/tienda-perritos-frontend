@@ -35,6 +35,6 @@ jobs:
         run: |
           aws ecs update-service \
             --cluster innovatech-cluster \
-            --service frontend \
+            --service tienda-perritos-frontend-service-ez76zsjz  \
             --force-new-deployment \
             --region us-east-1
